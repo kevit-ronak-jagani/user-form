@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    RouterOutlet,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
