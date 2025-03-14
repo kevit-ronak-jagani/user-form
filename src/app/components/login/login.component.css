@@ -51,7 +51,8 @@ label {
     position: relative;
 }
 
-.input-container i {
+.input-container .fa-envelope,
+.input-container .fa-lock {
     position: absolute;
     left: 15px;
     top: 50%;
@@ -129,25 +130,17 @@ button span {
     margin-right: 0.5rem;
 }
 
-.show-password-container {
-    display: flex;
-    margin-top: 8px;
-    font-size: 0.9em;
+.password-toggle-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaaaaa;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 2;
 }
 
-.show-password-container input[type="checkbox"] {
-    margin-right: 8px;
-    cursor: pointer;
-    min-height: 16px;
-    min-width: 16px;
-    padding: 0;
-}
-
-.show-password-container label {
-    cursor: pointer;
-    color: #666;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    line-height: 1;
+.password-toggle-icon:hover {
+    color: #a777e3;
 }
