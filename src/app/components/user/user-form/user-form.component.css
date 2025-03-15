@@ -1,0 +1,161 @@
+.user-form-container {
+    max-width: 1000px;
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-panel,
+.details-panel {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    flex: 1;
+    overflow: auto;
+}
+
+p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+h3 {
+    color: var(--text-medium);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.var(--spacing-xxl);
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.required {
+    color: var(--error-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    height: 2.5rem;
+    transition: all var(--transition-speed);
+    background-color: var(--background-light);
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-light);
+    background-color: white;
+    outline: none;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-item,
+.radio-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.1rem;
+}
+
+.checkbox-item input,
+.radio-item input {
+    margin-right: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.checkbox-item label,
+.radio-item label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: var(--font-sm);
+    margin-top: 0.3rem;
+}
+
+.form-buttons {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+button {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.reset-btn {
+    background-color: var(--reset-btn-color);
+    color: #555;
+}
+
+.submit-btn {
+    background: linear-gradient(to right, #6e8efb, var(--primary-color));
+    color: white;
+}
+
+.back-btn {
+    background: linear-gradient(to right, #6e8efb, var(--primary-color));
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sub-form-group {
+    margin-bottom: 1rem;
+}
+
+.hobbies-group {
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 532px) {
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+}

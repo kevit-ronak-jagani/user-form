@@ -10,3 +10,31 @@ html {
 * {
     box-sizing: border-box;
 }
+
+:root {
+    /* Colors */
+    --primary-color: #a777e3;
+    --primary-light: rgba(167, 119, 227, 0.2);
+    --text-dark: #383030;
+    --text-medium: #555555;
+    --text-light: #7c7a7a;
+    --error-color: #e74c3c;
+    --background-light: #f9f9f9;
+    --border-color: #e1e1e1;
+    --white: #ffffff;
+    --reset-btn-color: #f1f1f1;
+
+    /* Spacing */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 0.8rem;
+    --spacing-xxl: 2rem;
+
+    /* Fonts */
+    --font-sm: 0.9rem;
+
+    /* Border Radius */
+    --border-radius: 8px;
+
+    /* Transitions */
+    --transition-speed: 0.3s;
+}

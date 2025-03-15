@@ -32,12 +32,8 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
   });
-
-  // Add this property to your component class
-  // Add this property to your component class
   showPassword = false;
 
-  // Add this method to your component class
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }

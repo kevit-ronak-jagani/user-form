@@ -1,1 +1,131 @@
-<p>user-form works!</p>
+<div class="user-form-container">
+    <div class="form-panel">
+        <h2>User Details Form</h2>
+        <p>Please fill in your details below</p>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name <span class="required">*</span></label>
+                <input type="text" id="name" formControlName="name" placeholder="Enter your full name">
+                <div class="error-message" *ngIf="submitted && userForm.get('name')?.errors as errors">
+                    <span *ngIf="errors['required']">Name is required</span>
+                    <span *ngIf="errors['pattern']">Name must contain only letters and spaces</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" formControlName="email" placeholder="Enter your email address">
+                <div class="error-message" *ngIf="submitted && userForm.get('email')?.errors as errors">
+                    <span *ngIf="errors['required']">Email is required</span>
+                    <span *ngIf="errors['email']">Please enter a valid email address</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth <span class="required">*</span></label>
+                <input type="date" id="dob" formControlName="dob" [max]="maxDate">
+                <div class="error-message" *ngIf="submitted && userForm.get('dob')?.errors as errors">
+                    <span *ngIf="errors['required']">Date of birth is required</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" formControlName="phone" placeholder="Enter your 10-digit phone number">
+                <div class="error-message" *ngIf="submitted && userForm.get('phone')?.errors as errors">
+                    <span *ngIf="errors['required']">Phone number is required</span>
+                    <span *ngIf="errors['pattern']">Please enter a valid 10-digit phone number</span>
+                </div>
+            </div>
+
+            <div class="form-group" formGroupName="education">
+                <h3>Education <span class="required">*</span></h3>
+
+                <div class="sub-form-group">
+                    <label for="institute">Institute/School</label>
+                    <input type="text" id="institute" formControlName="institute" placeholder="Enter institute name">
+                    <div class="error-message"
+                        *ngIf="submitted && userForm.get('education.institute')?.errors?.['required']">
+                        Institute name is required
+                    </div>
+                </div>
+
+                <div class="sub-form-group">
+                    <label for="educationType">Education Type</label>
+                    <select id="educationType" formControlName="type">
+                        <option value="" disabled selected>Select education</option>
+                        <option *ngFor="let type of educationTypes" [value]="type">{{ type }}</option>
+                    </select>
+                    <div class="error-message"
+                        *ngIf="submitted && userForm.get('education.type')?.errors?.['required']">
+                        Education type is required
+                    </div>
+                </div>
+
+                <div class="sub-form-group">
+                    <label for="percentage">Percentage</label>
+                    <input type="number" id="percentage" formControlName="percentage" placeholder="Enter percentage"
+                        min="0" max="100">
+                    <div class="error-message"
+                        *ngIf="submitted && userForm.get('education.percentage')?.errors as errors">
+                        <span *ngIf="errors['required']">Percentage is required</span>
+                        <span *ngIf="errors['min'] || errors['max']">Percentage must be between 0-100</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: var(--spacing-md);">
+                <h3>Gender <span class="required">*</span></h3>
+                <div class="sub-form-group">
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="male" value="Male" formControlName="gender">
+                            <label for="male">Male</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="female" value="Female" formControlName="gender">
+                            <label for="female">Female</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="other" value="Other" formControlName="gender">
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+                    <div class="error-message" *ngIf="submitted && userForm.get('gender')?.errors as errors">
+                        <span *ngIf="errors['required']">Gender is required</span>
+                    </div>
+                </div>
+
+                <div class="hobbies-group">
+                    <h3>Hobbies (Optional)</h3>
+                    <div class="sub-form-group">
+                        <div class="checkbox-group">
+                            <div class="checkbox-item" *ngFor="let hobby of hobbies">
+                                <input type="checkbox" [id]="hobby.id" [value]="hobby.name"
+                                    [checked]="isHobbySelected(hobby.name)" (change)="onCheckboxChange($event)">
+                                <label [for]="hobby.id">{{ hobby.name }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address (Optional)</label>
+                <textarea id="address" formControlName="address" rows="4" style="resize: vertical;"
+                    placeholder="Enter your address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="summary">Summary (Optional)</label>
+                <textarea id="summary" formControlName="summary" rows="4" style="resize: vertical;"
+                    placeholder="Tell us about yourself"></textarea>
+            </div>
+
+            <div class="form-buttons">
+                <button type="button" class="reset-btn" (click)="onReset()">Reset</button>
+                <button type="submit" class="submit-btn">Save</button>
+            </div>
+
+        </form>    </div>
+</div>

@@ -8,6 +8,7 @@ import { UserFormComponent } from './components/user/user-form/user-form.compone
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     RouterOutlet,
     RouterModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,110 @@
-<p>user-details works!</p>
+<div class="user-details-container">
+    <div class="header">
+        <h1>User Profile</h1>
+        <p>Your Personal Information</p>
+    </div>
+
+    <div class="details-card" *ngIf="userDetails">
+        <div class="profile-header">
+            <div class="avatar">
+                <img src="../../../../assets/images/user.svg" alt="User Avatar">
+            </div>
+            <div class="profile-info">
+                <h2>{{ userDetails.name }}</h2>
+                <p><i class="fa fa-envelope"></i> {{ userDetails.email }}</p>
+            </div>
+            <div class="action-buttons">
+                <button class="logout-btn" (click)="onLogout()">
+                    <i class="fa fa-sign-out-alt"></i> Logout
+                </button>
+                <button class="edit-btn" (click)="onEdit()">
+                    <i class="fa fa-edit"></i> Edit
+                </button>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="left-panel">
+                <div class="basic-info">
+                    <h3><i class="fa fa-info-circle"></i> Basic Information</h3>
+                    <div class="detail-item">
+                        <i class="fa fa-calendar"></i>
+                        <div class="detail-content">
+                            <span class="label">Date of Birth:</span>
+                            <span class="value">{{ userDetails.formattedDob }}</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa fa-phone"></i>
+                        <div class="detail-content">
+                            <span class="label">Phone:</span>
+                            <span class="value">{{ userDetails.phone }}</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa fa-user"></i>
+                        <div class="detail-content">
+                            <span class="label">Gender:</span>
+                            <span class="value">{{ userDetails.gender }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additional-info"
+                    *ngIf="userDetails.hobbies?.length || userDetails.summary || userDetails.address">
+                    <h3><i class="fa fa-plus-circle"></i> Additional Information</h3>
+                    <div class="detail-item" *ngIf="userDetails.hobbies && userDetails.hobbies.length">
+                        <i class="fa fa-star"></i>
+                        <div class="detail-content">
+                            <span class="label">Hobbies:</span>
+                            <span class="value">{{ filteredHobbies }}</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-item" *ngIf="userDetails.address">
+                        <i class="fa fa-map-marker-alt"></i>
+                        <div class="detail-content">
+                            <span class="label">Address:</span>
+                            <span class="value">{{ userDetails.address }}</span>
+                        </div>
+                    </div>
+                    <div class="detail-item" *ngIf="userDetails.summary">
+                        <i class="fa fa-file-alt"></i>
+                        <div class="detail-content">
+                            <span class="label">Summary:</span>
+                            <span class="value">{{ userDetails.summary }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="education-info">
+                    <h3><i class="fa fa-graduation-cap"></i> Education</h3>
+                    <div class="education-details">
+                        <div class="detail-item">
+                            <i class="fa fa-university"></i>
+                            <div class="detail-content">
+                                <span class="label">Institute:</span>
+                                <span class="value">{{ userDetails.education.institute }}</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa fa-user-graduate"></i>
+                            <div class="detail-content">
+                                <span class="label">Type:</span>
+                                <span class="value">{{ userDetails.education.type }}</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa fa-award"></i>
+                            <div class="detail-content">
+                                <span class="label">Percentage:</span>
+                                <span class="value">{{ userDetails.education.percentage }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
