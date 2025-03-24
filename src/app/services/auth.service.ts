@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,10 @@ export class AuthService {
   constructor(private router: Router) {}
 
   login(email: string, password: string): boolean {
-    if (email === 'test@example.com' && password === 'password123') {
+    if (
+      email === environment.auth.email &&
+      password === environment.auth.password
+    ) {
       localStorage.setItem('user', JSON.stringify({ email }));
       return true;
     }

@@ -16,9 +16,9 @@ export class UserFormComponent implements OnInit {
   userForm!: FormGroup;
   submitted = false;
   userDetails: User | null = null;
-  maxDate!: string;
+  maxDate = new Date().toISOString().split('T')[0];
 
-  hobbies = [
+  readonly hobbies = [
     { id: 1, name: 'Reading' },
     { id: 2, name: 'Sports' },
     { id: 3, name: 'Music' },
@@ -27,7 +27,7 @@ export class UserFormComponent implements OnInit {
     { id: 6, name: 'Cooking' },
   ];
 
-  educationTypes = [
+  readonly educationTypes = [
     'SSC',
     'HSC',
     'Diploma',
@@ -48,7 +48,6 @@ export class UserFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.maxDate = new Date().toISOString().split('T')[0];
     this.initForm();
 
     this.userDetails = this.userService.getUserDetails();
@@ -64,7 +63,15 @@ export class UserFormComponent implements OnInit {
 
   initForm(): void {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern("^[a-zA-Z]+([ '-][a-zA-Z]+)*$"),
+          Validators.minLength(2),
+          Validators.maxLength(30),
+        ],
+      ],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
